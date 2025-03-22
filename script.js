@@ -19,8 +19,8 @@ document.addEventListener("mousemove", (e) => {
     let dx = e.clientX - startX;
     let dy = e.clientY - startY;
 
-    posX -= dx;
-    posY -= dy;
+    posX += dx; // Reverse direction
+    posY += dy;
 
     velocityX = dx;
     velocityY = dy;
@@ -37,21 +37,22 @@ document.addEventListener("mouseup", () => {
     applyInertia();
 });
 
-// Smooth Inertia Effect
+// Smooth Inertia Effect (After releasing)
 function applyInertia() {
     if (Math.abs(velocityX) > 0.1 || Math.abs(velocityY) > 0.1) {
-        posX -= velocityX;
-        posY -= velocityY;
+        posX += velocityX; // Reverse inertia direction
+        posY += velocityY;
+
         document.body.style.backgroundPosition = `${posX}px ${posY}px`;
 
-        velocityX *= friction; // Slow down over time
+        velocityX *= friction; // Slow down gradually
         velocityY *= friction;
 
         requestAnimationFrame(applyInertia);
     }
 }
 
-// Mobile Touch Support
+// Mobile Touch Support (Reversed directions)
 document.addEventListener("touchstart", (e) => {
     isDragging = true;
     startX = e.touches[0].clientX;
@@ -66,8 +67,8 @@ document.addEventListener("touchmove", (e) => {
     let dx = e.touches[0].clientX - startX;
     let dy = e.touches[0].clientY - startY;
 
-    posX -= dx;
-    posY -= dy;
+    posX += dx; // Reverse direction
+    posY += dy;
 
     velocityX = dx;
     velocityY = dy;
@@ -83,7 +84,7 @@ document.addEventListener("touchend", () => {
     applyInertia();
 });
 
-// Click Animation Effect
+// Click Animation Effect (for icons)
 document.querySelectorAll(".icon").forEach(icon => {
     icon.addEventListener("click", () => {
         icon.style.transform = "scale(1.3)";
@@ -93,7 +94,7 @@ document.querySelectorAll(".icon").forEach(icon => {
     });
 });
 
-// Prevent Pinch Zoom
+// Prevent Pinch Zoom (Stops unwanted zooming on mobile)
 document.addEventListener('gesturestart', (e) => e.preventDefault());
 document.addEventListener('touchmove', (e) => {
     if (e.scale !== 1) e.preventDefault();
