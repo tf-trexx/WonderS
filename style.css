@@ -1,0 +1,61 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    background: url('1.jpeg') repeat;
+    background-size: fill;
+    overflow: hidden;
+    cursor: grab;
+}
+
+/* Bottom Tab */
+#bottom-tab {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 450px; /* Default for PC */
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1); /* Transparent effect */
+    backdrop-filter: blur(10px); /* Smooth glass effect */
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Adjust for Mobile */
+@media (max-width: 768px) {
+    body {
+        background: url('2.jpeg') repeat;
+        background-size: cover;
+
+
+    }
+}
+
+/* Adjust for Mobile */
+@media (max-width: 768px) {
+    #bottom-tab {
+        width: 280px;
+        height: 60px;
+        border-radius: 20px;
+        bottom: 3%;
+        position: fixed;
+    }
+}
+
+/* Icon Styling */
+.icon {
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    opacity: 0.8;
+}
+
+/* Click Animation */
+.icon:active {
+    transform: scale(1.2);
+    opacity: 1;
+}
