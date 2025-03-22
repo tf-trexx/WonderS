@@ -65,3 +65,8 @@ document.querySelectorAll(".icon").forEach(icon => {
         }, 200);
     });
 });
+
+document.addEventListener('gesturestart', (e) => e.preventDefault()); // Stops pinch zoom  
+document.addEventListener('touchmove', (e) => {
+    if (e.scale !== 1) e.preventDefault();
+}, { passive: false });
