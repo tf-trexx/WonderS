@@ -5,6 +5,7 @@ body {
     background-size: fill;
     overflow: hidden;
     cursor: grab;
+    touch-action: none; /* Stops touch gestures from affecting it */
 }
 
 /* Bottom Tab */
