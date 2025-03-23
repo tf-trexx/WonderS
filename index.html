@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>WonderSpace</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -14,7 +14,33 @@
             <div class="icon" id="icon3">✨</div>
             <div class="icon" id="icon4">🌙</div>
         </div>
+        <!-- Popup Box -->
+<div id="popup-box" class="hidden">
+     <!-- Text Input -->
+     <textarea id="element-text" placeholder="Write the thoughts"></textarea>
+
+     <!-- Color Presets -->
+     <div id="color-options">
+         <div class="color-option" data-color="#FF5733" style="background:#c5f081;"></div>
+         <div class="color-option" data-color="#33FF57" style="background:#fad56f;"></div>
+         <div class="color-option" data-color="#3357FF" style="background:#ffbede;"></div>
+         <div class="color-option" data-color="#FFD700" style="background:#ff5b5b;"></div>
+         <div class="color-option" data-color="#FF33A6" style="background:#4b4b4b;"></div>
+     </div>
+ 
+     <!-- Duration Selection -->
+     <select id="element-duration">
+         <option value="24h">24 Hours</option>
+         <option value="7d">7 Days</option>
+         <option value="1m">1 Month</option>
+     </select>
+ 
+     <!-- Shoot Button -->
+     <button id="shoot-button">Shoot</button>
+</div>
+
     <script src="script.js"></script>
+    <script src="element.js"></script>
 
 </body>
 </html>
