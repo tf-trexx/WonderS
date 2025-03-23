@@ -60,3 +60,138 @@ body {
     transform: scale(1.2);
     opacity: 1;
 }
+
+/* Popup Box */
+#popup-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Makes all items stack vertically */
+    align-items: center;
+    gap: 15px; /* Adds spacing between items */
+    z-index: 2;
+}
+
+/* Make Popup Visible */
+#popup-box.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Adjust for Mobile */
+@media (max-width: 768px) {
+    #popup-box {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 295px;
+        height: 295px;
+        background: rgba(255, 255, 255, 0.082);
+        backdrop-filter: blur(10px);
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 18px;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+}
+
+/* Text Input */
+#element-text {
+    width: 90%;
+    height: 50px;
+    margin: 10px 0;
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: rgba(172, 172, 172, 0.123);
+}
+
+/* Color Options */
+#color-options {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+}
+
+.color-option {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.color-option:hover {
+    transform: scale(1.2);
+}
+
+/* Duration Selection */
+#element-duration {
+    width: 100px;
+    padding: 5px;
+    border-radius: 5px;
+    background: rgba(172, 172, 172, 0.123);
+    outline: none;
+}
+
+/* Shoot Button */
+#shoot-button {
+    width: 100px;
+    margin-top: 10px;
+    padding: 8px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(172, 172, 172, 0.123);
+    cursor: pointer;
+    font-size: 14px;
+  
+}
+
+
+.floating-element {
+    position: absolute;
+    min-height: 100px;
+    max-height: 250px;
+    min-width: 100px;
+    max-width: 250px;
+    border-radius: 20px;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-out;
+    transform: scale(0); /* Bubble effect */
+    z-index: 1;
+    padding: 20px; /* Add padding to prevent text from touching edges */
+    text-align: center; /* Center the text */
+    word-wrap: break-word; /* Break long words */
+    line-height: 1.5; /* Adjust line height to space out text evenly */
+    overflow: hidden; /* Prevent overflow */
+    align-items: center; /* Center content */
+    justify-content: center; /* Center content */
+    
+    
+}
+
+/* Make Popup Visible */
+#popup-box.show {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
