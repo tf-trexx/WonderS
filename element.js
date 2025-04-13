@@ -1,3 +1,24 @@
+
+function makeTransparentColor(color, alpha = 0.5) {
+    if (color.startsWith("rgb(")) {
+        const [r, g, b] = color.match(/\d+/g);
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+    if (color.startsWith("#")) {
+        // Convert hex to rgba
+        let hex = color.replace("#", "");
+        if (hex.length === 3) {
+            hex = hex.split("").map(c => c + c).join("");
+        }
+        const r = parseInt(hex.substring(0, 2), 16);
+        const g = parseInt(hex.substring(2, 4), 16);
+        const b = parseInt(hex.substring(4, 6), 16);
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+    return color; // fallback
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const icon1 = document.getElementById("icon1");
     const popupBox = document.getElementById("popup-box");
@@ -55,9 +76,22 @@ colorOptions.forEach(option => {
 function createFloatingElement(text, color, duration) {
     const element = document.createElement("div");
     element.classList.add("floating-element");
-    element.innerText = text;
+    // Create the inner box
+const innerBox = document.createElement("div");
+innerBox.classList.add("inner-box");
+innerBox.innerText = text; // Put the user's text here
+
+// Add inner box to the outer floating element
+element.appendChild(innerBox);
+
     element.style.backgroundColor = color || selectedColor;  
     console.log("Element Created with Color:", color || selectedColor); // Debugging
+
+    const transparentColor = makeTransparentColor(color || selectedColor, 0.5);
+element.style.backgroundColor = transparentColor;
+element.style.backdropFilter = "blur(10px)";
+element.style.webkitBackdropFilter = "blur(10px)";
+element.style.borderRadius = "12px"; // Optional, just to make it pretty
 
     let worldX, worldY;
     let validPosition = false;
@@ -133,4 +167,3 @@ function createFloatingElement(text, color, duration) {
 
 
 });
-
